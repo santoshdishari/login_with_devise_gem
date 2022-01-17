@@ -1,0 +1,35 @@
+
+<% if user_signed_in? %>
+  <h1> hello user</h1>
+
+  <h3>Create new employee</h3>
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <%= link_to "Create", new_employee_path %>
+  <% @employees.each do |employee| %>
+    <ul>
+      <li>
+        <%= employee.first_name %>
+      </li>
+      <li>
+        <%= employee.last_name %>
+      </li>
+      <li>
+        <%= employee.email %>
+      </li>
+      <li>
+        <%= employee.phone %>
+      </li>
+      <li>
+        <%= employee.address %>
+      </li>
+    </ul>
+    <%= link_to "show", employee_path(employee)  %>
+    <li><%= link_to "Edit", edit_employee_path(employee) %></li>
+    <li><%= link_to "Destroy", employee_path(employee),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+  <% end %>  
+<%else%>
+  <%= link_to "sign up", new_user_registration_path %>
+  <%= link_to "login", new_user_session_path %>
+<%end%>
