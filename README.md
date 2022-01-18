@@ -23,3 +23,4 @@ Things you may want to cover:
 
 * ...
 # login_with_devise_gem
+# login_with_devise_gem
